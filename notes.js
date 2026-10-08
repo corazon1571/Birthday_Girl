@@ -12,7 +12,7 @@ window.BIRTHDAY_DATA = {
   // 💜 Recipient Information
   recipientName: "My Love",
   partnerName: "Yours Always",
-  birthdayDate: "2026-10-18", // YYYY-MM-DD
+  birthdayDate: "2026-10-09", // YYYY-MM-DD
   subtitleMessage: "Wishing the most beautiful soul the happiest birthday. You make every day bloom in shades of wonder.",
 
   // 🎵 Audio Settings (Default romantic acoustic melody is generated in real-time, or you can paste an MP3 audio URL here)
@@ -122,40 +122,40 @@ window.BIRTHDAY_DATA = {
         // Videos will autoplay seamlessly on loop like living Harry-Potter style polaroid cards!
         memories: [
           {
-            title: "Lavender Fields at Sunset",
-            date: "Summer Evening",
-            caption: "The twilight sky was purple and gold, but I couldn't stop looking at you.",
-            image: "", // e.g. "images/photo1.jpg" or "https://..."
-            video: "", // e.g. "images/video1.mp4" (leave empty if using photo)
+            title: "Side by Side With You",
+            date: "Special Moments",
+            caption: "Right here next to you is my absolute favorite place in the whole world.",
+            image: "images/Snapchat-1670551445.jpg",
+            video: "",
             colorGradient: "linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%)",
-            icon: "🌸"
+            icon: "✨"
           },
           {
-            title: "Flower Market Stroll",
-            date: "Spring Morning",
-            caption: "Watching you light up picking fresh blooms and fragrant lavender.",
-            image: "", // e.g. "images/photo2.jpg"
-            video: "", // e.g. "images/video2.mp4"
+            title: "Pure Joy & Laughter",
+            date: "Sunlit Smiles",
+            caption: "Your infectious laugh and playful humor that never fails to brighten up my day.",
+            image: "images/Snapchat-590514785.jpg",
+            video: "",
             colorGradient: "linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 100%)",
             icon: "🌷"
           },
           {
-            title: "Cozy Rainy Day",
-            date: "Autumn Afternoon",
-            caption: "Hot tea, soft blankets, gentle raindrops against the window with you.",
-            image: "", // e.g. "images/photo3.jpg"
-            video: "",
+            title: "Caught in the Moment",
+            date: "Sweet Moments",
+            caption: "Effortlessly gorgeous, charming, and always radiating pure beauty.",
+            image: "",
+            video: "images/Snapchat-1297357656.mp4",
             colorGradient: "linear-gradient(135deg, #c7d2fe 0%, #e0e7ff 100%)",
-            icon: "🌧️"
+            icon: "📹"
           },
           {
-            title: "Under The City Lights",
-            date: "Winter Night",
-            caption: "Hands held tight in coat pockets, walking nowhere in particular.",
-            image: "", // e.g. "images/photo4.jpg"
-            video: "",
+            title: "Forever Cherished",
+            date: "Captured in Motion",
+            caption: "Every single second with you is a memory I want to replay forever.",
+            image: "",
+            video: "images/Snapchat-1666010886.mp4",
             colorGradient: "linear-gradient(135deg, #ddd6fe 0%, #a78bfa 100%)",
-            icon: "✨"
+            icon: "💜"
           }
         ],
         closing: "Here is to filling hundreds more albums together.",

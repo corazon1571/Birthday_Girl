@@ -21,11 +21,39 @@
           localStorage.setItem(STORAGE_KEY, stored);
         }
         const parsed = JSON.parse(stored);
-        return {
+        
+        // Deeply preserve fresh memories and media from window.BIRTHDAY_DATA
+        let envelopes = (window.BIRTHDAY_DATA && window.BIRTHDAY_DATA.envelopes) ? window.BIRTHDAY_DATA.envelopes : [];
+        if (parsed.envelopes && Array.isArray(parsed.envelopes)) {
+          envelopes = envelopes.map(defaultEnv => {
+            const storedEnv = parsed.envelopes.find(e => e.id === defaultEnv.id);
+            if (!storedEnv) return defaultEnv;
+            const mergedContent = { ...storedEnv.content, ...defaultEnv.content };
+            // If defaultEnv in notes.js has memories defined, always use defaultEnv.content.memories
+            if (defaultEnv.content && defaultEnv.content.memories) {
+              mergedContent.memories = defaultEnv.content.memories;
+            }
+            return {
+              ...storedEnv,
+              ...defaultEnv,
+              content: mergedContent
+            };
+          });
+        }
+
+        const effectiveDate = (window.BIRTHDAY_DATA && window.BIRTHDAY_DATA.birthdayDate) ? window.BIRTHDAY_DATA.birthdayDate : "2026-10-09";
+        const mergedData = {
           ...window.BIRTHDAY_DATA,
           ...parsed,
+          birthdayDate: effectiveDate,
+          envelopes: envelopes,
           compliments: (parsed.compliments && parsed.compliments.length) ? parsed.compliments : window.BIRTHDAY_DATA.compliments
         };
+        // Update stored cache so stale memories don't linger
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(mergedData));
+        } catch (_) {}
+        return mergedData;
       }
     } catch (e) {
       console.warn('LocalStorage unavailable, using default notes.js data', e);
@@ -416,6 +444,18 @@
     startComplimentAutoplay();
   }
 
+  function formatBirthdayDate(dateStr) {
+    if (!dateStr) return 'OCTOBER 9, 2026';
+    try {
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase();
+      }
+    } catch (_) {}
+    return dateStr;
+  }
+
   // --- RENDER HERO & METADATA ---
   function renderHero() {
     const heroName = document.getElementById('heroRecipientName');
@@ -428,7 +468,31 @@
     if (heroSub) heroSub.textContent = appData.subtitleMessage || '';
     if (partnerFooter) partnerFooter.textContent = appData.partnerName || 'Yours Always';
     if (vaseTag) vaseTag.textContent = `For ${appData.recipientName || 'You'} ♡`;
-    if (badgeEl) badgeEl.textContent = 'Celebrating Your Special Day Today ✨';
+    
+    if (badgeEl) {
+      const today = new Date();
+      const bDate = appData.birthdayDate ? new Date(appData.birthdayDate + 'T00:00:00') : null;
+      if (bDate) {
+        const isSameDay = today.getFullYear() === bDate.getFullYear() &&
+                          today.getMonth() === bDate.getMonth() &&
+                          today.getDate() === bDate.getDate();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+        const isTomorrow = tomorrow.getFullYear() === bDate.getFullYear() &&
+                           tomorrow.getMonth() === bDate.getMonth() &&
+                           tomorrow.getDate() === bDate.getDate();
+
+        if (isSameDay) {
+          badgeEl.textContent = '🎉 Happy Birthday Today! • October 9th 🎂';
+        } else if (isTomorrow) {
+          badgeEl.textContent = '🌸 Today is all about you • October 9th! ✨';
+        } else {
+          badgeEl.textContent = `A Special Celebration • October 9, 2026 ✨`;
+        }
+      } else {
+        badgeEl.textContent = '🌸 Today is all about you • October 9th! ✨';
+      }
+    }
 
     showCompliment(currentComplimentIdx, false);
   }
@@ -444,6 +508,21 @@
       cardItem.className = 'envelope-card-item';
       cardItem.id = `card-item-${env.id}`;
 
+      const hasMemories = env.content && env.content.memories && env.content.memories.length > 0;
+      let peekMediaHtml = '';
+      if (hasMemories) {
+        const firstMem = env.content.memories[0];
+        const isVid = firstMem.video || (firstMem.image && /\.(mp4|webm|mov|ogg|m4v)/i.test(firstMem.image));
+        const src = isVid ? (firstMem.video || firstMem.image) : firstMem.image;
+        if (isVid) {
+          peekMediaHtml = `<video src="${src}" autoplay muted loop playsinline></video>`;
+        } else if (src) {
+          peekMediaHtml = `<img src="${src}" alt="Memory Peek">`;
+        } else {
+          peekMediaHtml = `<span>${firstMem.icon || '🌸'}</span>`;
+        }
+      }
+
       cardItem.innerHTML = `
         <div class="envelope-meta-header">
           <span class="envelope-number">NO. ${env.number || String(index + 1).padStart(2, '0')}</span>
@@ -455,13 +534,22 @@
           <div class="envelope-inside"></div>
           
           <!-- Peek Letter inside -->
-          <div class="envelope-letter-peek">
-            <span style="font-size: 0.8rem; font-weight: 600; color: #db2777;">${env.title}</span>
-            <div class="peek-lines">
-              <span class="peek-line"></span>
-              <span class="peek-line"></span>
-              <span class="peek-line"></span>
-            </div>
+          <div class="envelope-letter-peek ${hasMemories ? 'envelope-peek-polaroid-wrap' : ''}">
+            ${hasMemories ? `
+              <div class="envelope-peek-polaroid">
+                <div class="peek-photo-frame">
+                  ${peekMediaHtml}
+                </div>
+                <span class="peek-caption">${env.content.memories[0]?.title || 'Our Memories'}</span>
+              </div>
+            ` : `
+              <span style="font-size: 0.8rem; font-weight: 600; color: #db2777;">${env.title}</span>
+              <div class="peek-lines">
+                <span class="peek-line"></span>
+                <span class="peek-line"></span>
+                <span class="peek-line"></span>
+              </div>
+            `}
           </div>
 
           <!-- Folded Flap (opens on hover / click) -->
@@ -483,9 +571,28 @@
         <div class="envelope-info">
           <h3 class="envelope-card-title">${env.title}</h3>
           <p class="envelope-card-sub">${env.subtitle || ''}</p>
+          ${hasMemories ? `
+            <div class="envelope-media-preview-strip" title="Click to open full polaroid album">
+              ${env.content.memories.map((m, idx) => {
+                const isVid = m.video || (m.image && /\.(mp4|webm|mov|ogg|m4v)/i.test(m.image));
+                const src = isVid ? (m.video || m.image) : m.image;
+                return `
+                  <div class="envelope-mini-thumb" title="${m.title || 'Memory ' + (idx + 1)}">
+                    ${isVid ? `
+                      <video src="${src}" muted playsinline preload="metadata"></video>
+                      <span class="mini-vid-badge">▶</span>
+                    ` : (src ? `
+                      <img src="${src}" alt="${m.title || 'Memory'}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${m.icon || '🌸'}</span>';">
+                    ` : `<span>${m.icon || '🌸'}</span>`)}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            <div class="envelope-photos-badge">📸 ${env.content.memories.length} Memories Inside • Tap to Open</div>
+          ` : ''}
           <button class="envelope-open-btn" data-envelope-id="${env.id}">
-            <span>Unseal & Read Letter</span>
-            <span>💌</span>
+            <span>${hasMemories ? 'Unseal & Open Album' : 'Unseal & Read Letter'}</span>
+            <span>${hasMemories ? '📸' : '💌'}</span>
           </button>
         </div>
       `;
@@ -504,6 +611,11 @@
 
       const openBtn = cardItem.querySelector('.envelope-open-btn');
       openBtn.addEventListener('click', openAction);
+
+      const previewStrip = cardItem.querySelector('.envelope-media-preview-strip');
+      if (previewStrip) {
+        previewStrip.addEventListener('click', openAction);
+      }
 
       grid.appendChild(cardItem);
     });
@@ -542,7 +654,7 @@
 
     if (stampIcon) stampIcon.textContent = env.flowerIcon || '🌸';
     if (stampText) stampText.textContent = env.stampText || 'SPECIAL';
-    if (dateStamp) dateStamp.textContent = `${appData.birthdayDate || 'OCTOBER 2026'}`;
+    if (dateStamp) dateStamp.textContent = formatBirthdayDate(appData.birthdayDate);
     if (letterTag) letterTag.textContent = env.tag || 'Love Letter';
     if (letterTitle) letterTitle.textContent = env.title;
     if (letterClosing) letterClosing.textContent = env.content.closing || 'With all my love,';
@@ -623,9 +735,10 @@
         const vid = photoEl?.querySelector('video');
         if (vid) {
           photoEl.style.cursor = 'pointer';
-          photoEl.title = 'Tap to play or pause video';
+          photoEl.title = 'Tap to play/pause or unmute video';
           photoEl.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (vid.muted) vid.muted = false;
             if (vid.paused) {
               vid.play();
             } else {
