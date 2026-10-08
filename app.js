@@ -594,9 +594,14 @@
       env.content.memories.forEach(m => {
         const pol = document.createElement('div');
         pol.className = 'polaroid-card';
+        const imgSource = m.image || m.imageUrl;
+        const photoContent = imgSource
+          ? `<img src="${imgSource}" alt="${m.title || 'Memory'}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline';"><span style="display:none;">${m.icon || '🌸'}</span>`
+          : `<span>${m.icon || '🌸'}</span>`;
+
         pol.innerHTML = `
           <div class="polaroid-photo" style="background: ${m.colorGradient || '#fce7f3'};">
-            <span>${m.icon || '🌸'}</span>
+            ${photoContent}
           </div>
           <div class="polaroid-title">${m.title}</div>
           <div class="polaroid-caption">${m.caption}</div>

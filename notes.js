@@ -116,11 +116,14 @@ window.BIRTHDAY_DATA = {
       preview: "Little moments that became my fondest memories...",
       content: {
         salutation: "A Few of My Favorite Memories With You:",
+        // 📸 Drop your photos into the "images" folder (e.g. "images/photo1.jpg") or use an online URL!
+        // Leave image empty ("") to show the colorful floral icon fallback.
         memories: [
           {
             title: "Lavender Fields at Sunset",
             date: "Summer Evening",
             caption: "The twilight sky was purple and gold, but I couldn't stop looking at you.",
+            image: "", // e.g. "images/photo1.jpg" or "https://..."
             colorGradient: "linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%)",
             icon: "🌸"
           },
@@ -128,6 +131,7 @@ window.BIRTHDAY_DATA = {
             title: "Flower Market Stroll",
             date: "Spring Morning",
             caption: "Watching you light up picking fresh blooms and fragrant lavender.",
+            image: "", // e.g. "images/photo2.jpg"
             colorGradient: "linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 100%)",
             icon: "🌷"
           },
@@ -135,6 +139,7 @@ window.BIRTHDAY_DATA = {
             title: "Cozy Rainy Day",
             date: "Autumn Afternoon",
             caption: "Hot tea, soft blankets, gentle raindrops against the window with you.",
+            image: "", // e.g. "images/photo3.jpg"
             colorGradient: "linear-gradient(135deg, #c7d2fe 0%, #e0e7ff 100%)",
             icon: "🌧️"
           },
@@ -142,6 +147,7 @@ window.BIRTHDAY_DATA = {
             title: "Under The City Lights",
             date: "Winter Night",
             caption: "Hands held tight in coat pockets, walking nowhere in particular.",
+            image: "", // e.g. "images/photo4.jpg"
             colorGradient: "linear-gradient(135deg, #ddd6fe 0%, #a78bfa 100%)",
             icon: "✨"
           }
