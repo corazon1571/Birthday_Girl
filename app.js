@@ -14,8 +14,12 @@
 
   function loadInitialData() {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      let stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
+        if (stored.includes('🪻')) {
+          stored = stored.replaceAll('🪻', '🌸');
+          localStorage.setItem(STORAGE_KEY, stored);
+        }
         const parsed = JSON.parse(stored);
         return { ...window.BIRTHDAY_DATA, ...parsed };
       }

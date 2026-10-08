@@ -28,7 +28,7 @@ window.BIRTHDAY_DATA = {
       title: "The Story of You",
       subtitle: "A love letter for your special day",
       sealColor: "#7c3aed", // Royal Amethyst
-      flowerIcon: "🪻",
+      flowerIcon: "🌸",
       stampText: "FIRST LOVE",
       preview: "Before this day begins, I wanted to tell you how deeply you mean to me...",
       content: {
@@ -57,7 +57,7 @@ window.BIRTHDAY_DATA = {
         salutation: "Ten Reasons Why You Are My Favorite Human:",
         reasons: [
           { emoji: "✨", title: "The way your eyes crinkle", desc: "Whenever you laugh at something truly funny." },
-          { emoji: "🪻", title: "Your love for flowers", desc: "How you stop to admire little blossoms along the sidewalk." },
+          { emoji: "🌸", title: "Your love for flowers", desc: "How you stop to admire little blossoms along the sidewalk." },
           { emoji: "☕", title: "Our quiet mornings", desc: "Sitting together with coffee, where silence never feels empty." },
           { emoji: "🤍", title: "Your gentle kindness", desc: "The way you always think about how other people feel." },
           { emoji: "🎶", title: "Your little happy dances", desc: "When your favorite food arrives or a song you love starts playing." },
@@ -111,7 +111,7 @@ window.BIRTHDAY_DATA = {
             date: "Summer Evening",
             caption: "The twilight sky was purple and gold, but I couldn't stop looking at you.",
             colorGradient: "linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%)",
-            icon: "🪻"
+            icon: "🌸"
           },
           {
             title: "Flower Market Stroll",
@@ -188,7 +188,7 @@ window.BIRTHDAY_DATA = {
       name: "Provence Lavender",
       symbolism: "Serenity, Grace & Peace",
       color: "#a855f7",
-      icon: "🪻",
+      icon: "🌸",
       quote: "Calming, fragrant, and gentle—reminding me of how peaceful the world feels with you."
     },
     {
