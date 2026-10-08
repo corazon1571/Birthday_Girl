@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love 🌸 • A Garden of Love Letters</title>
+  <meta name="description" content="A romantic birthday web experience filled with interactive flower bouquets, envelopes with wax seals, and heartfelt love letters.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+  <!-- Google Fonts: Editorial Serif, Handwritten Script, Modern Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@500;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Petal Rain & Sparkles Canvas Background -->
+  <canvas id="petalCanvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Audio Floating Bar -->
+  <aside class="audio-control-bar" aria-label="Audio Controls">
+    <button id="musicToggleBtn" class="audio-btn" aria-label="Play romantic background music" title="Play romantic background music">
+      <span class="music-icon" id="musicIcon">🎵</span>
+      <span class="music-text" id="musicTrackName">Play Romantic Melody</span>
+      <span class="music-waves" id="musicWaves" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </span>
+    </button>
+    <div class="audio-volume-wrap">
+      <label for="volumeSlider" class="sr-only">Volume</label>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.5" title="Volume slider">
+    </div>
+  </aside>
+
+  <!-- Top Action Bar (Customizer Toggle & Sound) -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      <span class="nav-flower">🌷</span>
+      <span class="nav-title">Birthday Garden</span>
+    </div>
+    <div class="nav-actions">
+      <button id="confettiBtn" class="pill-btn secondary" title="Shower celebratory petals & confetti">
+        <span>🎉 Shower Petals</span>
+      </button>
+      <button id="openCustomizerBtn" class="pill-btn primary" title="Edit names and notes">
+        <span>✍️ Edit Notes</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Experience Wrapper -->
+  <main class="page-container">
+    
+    <!-- Hero Banner Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-wreath" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="wreath-svg">
+          <circle cx="100" cy="100" r="85" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6"/>
+          <!-- Decorative floral accents -->
+          <circle cx="100" cy="15" r="4" fill="currentColor"/>
+          <circle cx="185" cy="100" r="4" fill="currentColor"/>
+          <circle cx="100" cy="185" r="4" fill="currentColor"/>
+          <circle cx="15" cy="100" r="4" fill="currentColor"/>
+        </svg>
+        <span class="wreath-center-icon">🌸</span>
+      </div>
+
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span id="heroDateBadge">A Special Celebration</span>
+      </div>
+
+      <h1 class="hero-title">
+        Happy Birthday, <span class="highlight-name" id="heroRecipientName">My Love</span>
+      </h1>
+
+      <p class="hero-subtitle" id="heroSubtitle">
+        Wishing the most beautiful soul the happiest birthday. You make every day bloom.
+      </p>
+
+      <!-- Interactive Countdown / Days of Sunshine widget -->
+      <div class="countdown-card" id="countdownCard">
+        <div class="countdown-header">
+          <span class="countdown-icon">⏳</span>
+          <span class="countdown-label" id="countdownLabel">Counting down to your special day</span>
+        </div>
+        <div class="countdown-timer" id="countdownTimer">
+          <div class="time-block"><span class="time-num" id="daysVal">00</span><span class="time-txt">Days</span></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span class="time-num" id="hoursVal">00</span><span class="time-txt">Hours</span></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span class="time-num" id="minsVal">00</span><span class="time-txt">Mins</span></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span class="time-num" id="secsVal">00</span><span class="time-txt">Secs</span></div>
+        </div>
+      </div>
+
+      <a href="#lettersGarden" class="scroll-down-hint" aria-label="Scroll to letters garden">
+        <span>Explore Your Envelopes</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 10l5 5 5-5"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- SECTION 1: THE ENVELOPE GARDEN (Notes & Letters) -->
+    <section class="section-container" id="lettersGarden">
+      <div class="section-header">
+        <span class="section-tag">💌 Sealed With Love</span>
+        <h2 class="section-title">The Garden of Envelopes</h2>
+        <p class="section-description">
+          Each envelope holds a quiet thought, memory, or wish for you. Tap any wax seal to open and read its note.
+        </p>
+      </div>
+
+      <!-- Envelopes Grid -->
+      <div class="envelopes-grid" id="envelopesGrid">
+        <!-- Rendered dynamically by app.js from notes.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE BOUQUET BUILDER -->
+    <section class="section-container bouquet-section" id="bouquetGarden">
+      <div class="section-header">
+        <span class="section-tag">💐 Pick Your Blooms</span>
+        <h2 class="section-title">Handpick Your Birthday Bouquet</h2>
+        <p class="section-description">
+          Because you adore flowers, pick each blossom you love to arrange a fresh birthday bouquet in your vase.
+        </p>
+      </div>
+
+      <div class="bouquet-workspace">
+        <!-- Left: Flower Selector Palette -->
+        <div class="flower-palette">
+          <h3 class="palette-title">Floral Garden Selection</h3>
+          <p class="palette-tip">Tap a flower to add it to your bouquet vase:</p>
+          <div class="flower-cards-list" id="flowerCardsList">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Right: Animated Floral Vase Display -->
+        <div class="vase-display-wrap">
+          <div class="vase-card">
+            <div class="vase-canvas-area" id="vaseCanvasArea">
+              <!-- Flowers rendered dynamically inside vase -->
+              <div class="vase-flowers-holder" id="vaseFlowersHolder">
+                <div class="empty-vase-hint" id="emptyVaseHint">
+                  <span class="hint-icon">🌷</span>
+                  <p>Tap flowers on the left to fill your birthday vase!</p>
+                </div>
+              </div>
+              <!-- Glass Vase SVG Illustration -->
+              <div class="glass-vase">
+                <div class="vase-water"></div>
+                <div class="vase-ribbon">
+                  <span class="ribbon-bow">🎀</span>
+                  <span class="ribbon-tag" id="vaseTag">For You ♡</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bouquet Message Card -->
+            <div class="bouquet-summary" id="bouquetSummary">
+              <div class="bouquet-count-badge">
+                <span id="bouquetCount">0</span> Blooms in Your Bouquet
+              </div>
+              <div class="bouquet-action-btns">
+                <button id="resetBouquetBtn" class="pill-btn text-only" title="Start over">Clear Vase</button>
+                <button id="bouquetGiftBtn" class="pill-btn primary" title="Wrap and present bouquet">Wrap Bouquet 💐</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MAKE A WISH & INTERACTIVE CAKE -->
+    <section class="section-container cake-section" id="cakeSection">
+      <div class="section-header">
+        <span class="section-tag">🎂 Blow The Candles</span>
+        <h2 class="section-title">Make a Birthday Wish</h2>
+        <p class="section-description">
+          Take a deep breath, make the most beautiful wish in your heart, and tap the candles to blow them out!
+        </p>
+      </div>
+
+      <div class="cake-stage">
+        <div class="cake-box">
+          <div class="cake-candles-row" id="candlesRow">
+            <div class="candle" data-lit="true" title="Tap to blow out candle">
+              <div class="flame"></div>
+              <div class="smoke"></div>
+              <div class="wick"></div>
+              <div class="candle-stick candle-1"></div>
+            </div>
+            <div class="candle" data-lit="true" title="Tap to blow out candle">
+              <div class="flame"></div>
+              <div class="smoke"></div>
+              <div class="wick"></div>
+              <div class="candle-stick candle-2"></div>
+            </div>
+            <div class="candle" data-lit="true" title="Tap to blow out candle">
+              <div class="flame"></div>
+              <div class="smoke"></div>
+              <div class="wick"></div>
+              <div class="candle-stick candle-3"></div>
+            </div>
+          </div>
+
+          <!-- Birthday Cake Layers -->
+          <div class="cake-body">
+            <div class="cake-frosting-top">
+              <div class="strawberry s1">🍓</div>
+              <div class="strawberry s2">🍓</div>
+              <div class="strawberry s3">🍓</div>
+              <div class="flower-topping">🌸</div>
+            </div>
+            <div class="cake-layer layer-top">
+              <div class="drip-row">
+                <span class="drip"></span><span class="drip"></span><span class="drip"></span><span class="drip"></span><span class="drip"></span>
+              </div>
+            </div>
+            <div class="cake-cream-filling"></div>
+            <div class="cake-layer layer-bottom"></div>
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+
+        <div class="cake-status-box" id="cakeStatusBox">
+          <p class="cake-instruction" id="cakeInstruction">
+            ✨ Tap each candle or tap the button below to blow them out!
+          </p>
+          <button id="blowCandlesBtn" class="pill-btn primary big-btn">
+            💨 Blow Out Candles
+          </button>
+        </div>
+
+        <!-- Secret Wish Reveal Message -->
+        <div class="wish-reveal-card hidden" id="wishRevealCard">
+          <div class="wish-seal">🎉</div>
+          <h3 class="wish-title">Your Wish Is Carried to the Stars!</h3>
+          <p class="wish-text" id="wishText">
+            May every dream and secret wish you whispered in your heart today bloom into reality. Happy Birthday, my whole world! 💖
+          </p>
+          <button id="relightCandlesBtn" class="pill-btn secondary">Relight Candles 🕯️</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-blossoms">🌸 🌷 🌺 🌹 🪻</div>
+    <p class="footer-quote">
+      "In a garden full of roses, you will forever be my rarest bloom."
+    </p>
+    <p class="footer-sign">
+      Crafted with endless love by <span id="footerPartnerName">Yours Always</span> ♡
+    </p>
+    <div class="footer-actions">
+      <button id="scrollToTopBtn" class="text-link">Back to Top ↑</button>
+      <span class="dot-sep">•</span>
+      <button id="footerEditBtn" class="text-link">Personalize Notes ✍️</button>
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- MODALS -->
+  <!-- ========================================================= -->
+
+  <!-- LETTER MODAL (Reads open letter with vintage parchment aesthetic) -->
+  <dialog id="letterModal" class="letter-dialog" closedby="any" aria-labelledby="modalLetterTitle">
+    <div class="letter-scroll-wrapper">
+      <div class="vintage-letter-card" id="vintageLetterCard">
+        
+        <!-- Header & Stamp -->
+        <div class="letter-top-row">
+          <div class="postal-stamp" id="modalPostalStamp">
+            <span class="stamp-icon" id="modalStampIcon">🌸</span>
+            <span class="stamp-text" id="modalStampText">SPECIAL</span>
+          </div>
+          <div class="letter-date-stamp" id="modalDateStamp">OCTOBER 2026</div>
+          <button id="closeLetterBtn" class="close-card-btn" aria-label="Close letter" title="Close letter">✕</button>
+        </div>
+
+        <!-- Letter Body -->
+        <div class="letter-content-area">
+          <span class="letter-tag" id="modalLetterTag">Open First</span>
+          <h2 class="letter-title" id="modalLetterTitle">The Story of You</h2>
+          <div class="letter-divider">
+            <span class="div-line"></span>
+            <span class="div-flower">❦</span>
+            <span class="div-line"></span>
+          </div>
+
+          <div class="letter-body-dynamic" id="modalLetterBody">
+            <!-- Injected by app.js based on card content (letter, reasons, album, coupon) -->
+          </div>
+
+          <div class="letter-signoff">
+            <p class="closing-text" id="modalLetterClosing">With all my heart,</p>
+            <p class="signature-text" id="modalLetterSignature">Yours, always & forever ♡</p>
+          </div>
+        </div>
+
+        <!-- Wax Seal Stamp Impression at bottom of letter -->
+        <div class="letter-footer-seal" id="modalFooterSeal">
+          <div class="seal-circle">
+            <span id="modalFooterSealIcon">💖</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </dialog>
+
+  <!-- CUSTOMIZER MODAL (Allows user to edit names, dates, and notes) -->
+  <dialog id="customizerModal" class="customizer-dialog" closedby="any" aria-labelledby="customizerTitle">
+    <div class="customizer-container">
+      <div class="customizer-header">
+        <h2 id="customizerTitle">Personalize Your Birthday Garden</h2>
+        <button id="closeCustomizerBtn" class="close-card-btn" aria-label="Close editor">✕</button>
+      </div>
+      <p class="customizer-desc">
+        Change names, date, or note text below. Everything saves instantly in your browser, or you can copy the changes into <code>notes.js</code>.
+      </p>
+
+      <form id="customizerForm" class="customizer-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="inputRecipient">Her Name / Nickname</label>
+            <input type="text" id="inputRecipient" required placeholder="e.g. My Love, Sophia, Sunshine">
+          </div>
+          <div class="form-group">
+            <label for="inputPartner">Your Name / Sign-off</label>
+            <input type="text" id="inputPartner" required placeholder="e.g. Yours Always, Alex">
+          </div>
+          <div class="form-group">
+            <label for="inputDate">Birthday Date</label>
+            <input type="date" id="inputDate">
+          </div>
+          <div class="form-group">
+            <label for="inputAudio">Custom Song URL (Optional MP3)</label>
+            <input type="url" id="inputAudio" placeholder="https://example.com/song.mp3 (leave empty for built-in melody)">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputSubtitle">Hero Greeting Subtitle</label>
+          <input type="text" id="inputSubtitle" placeholder="A sweet one-sentence greeting...">
+        </div>
+
+        <!-- Envelopes editor list -->
+        <div class="envelopes-editor-section">
+          <h3>Edit Envelope Letters</h3>
+          <div id="envelopeEditorList" class="envelope-editor-list">
+            <!-- Generated dynamically -->
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="resetDefaultsBtn" class="pill-btn text-only">Reset to Defaults</button>
+          <button type="button" id="exportJsonBtn" class="pill-btn secondary">Copy Clean Code</button>
+          <button type="submit" class="pill-btn primary">Save & Apply Changes 💖</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- BOUQUET GIFT WRAP MODAL -->
+  <dialog id="bouquetModal" class="bouquet-dialog" closedby="any" aria-labelledby="bouquetModalTitle">
+    <div class="bouquet-modal-content">
+      <button id="closeBouquetModalBtn" class="close-card-btn" aria-label="Close bouquet card">✕</button>
+      <div class="bouquet-presentation-ribbon">💐 BLESSED WITH LOVE 💐</div>
+      <h2 id="bouquetModalTitle" class="presentation-title">A Bouquet Picked Just For You</h2>
+      <div class="presentation-blooms" id="presentationBlooms">
+        <!-- Rendered icons -->
+      </div>
+      <div class="presentation-card">
+        <p class="pres-note-salutation">To My Sweetest Girl,</p>
+        <p class="pres-note-body" id="presentationNoteBody">
+          Every blossom in this bouquet was picked to celebrate you: vibrant, delicate, deeply fragrant, and filled with endless wonder.
+        </p>
+        <div class="pres-meanings-list" id="presentationMeanings">
+          <!-- Flower meanings list -->
+        </div>
+        <p class="pres-note-closing">Happy Birthday, beautiful! ♡</p>
+      </div>
+      <button id="shareBouquetBtn" class="pill-btn primary">Celebrate With Confetti! 🎉</button>
+    </div>
+  </dialog>
+
+  <!-- Load JavaScript Modules -->
+  <script src="notes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
