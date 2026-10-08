@@ -587,17 +587,29 @@
       letterBody.appendChild(list);
     }
 
-    // Case 3: Polaroid memories
+    // Case 3: Polaroid memories (Supports Photos & Videos!)
     if (env.content.memories) {
       const grid = document.createElement('div');
       grid.className = 'polaroids-grid';
       env.content.memories.forEach(m => {
         const pol = document.createElement('div');
         pol.className = 'polaroid-card';
-        const imgSource = m.image || m.imageUrl;
-        const photoContent = imgSource
-          ? `<img src="${imgSource}" alt="${m.title || 'Memory'}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline';"><span style="display:none;">${m.icon || '🌸'}</span>`
-          : `<span>${m.icon || '🌸'}</span>`;
+        const videoSource = m.video || (m.image && /\.(mp4|webm|mov|ogg|m4v)(\?.*)?$/i.test(m.image) ? m.image : null);
+        const imgSource = !videoSource ? (m.image || m.imageUrl) : null;
+
+        let photoContent;
+        if (videoSource) {
+          photoContent = `
+            <video src="${videoSource}" autoplay loop muted playsinline preload="metadata" title="${m.title || 'Video Memory'}"></video>
+            <span class="video-indicator-badge" title="Live Video Clip">▶</span>
+          `;
+        } else if (imgSource) {
+          photoContent = `
+            <img src="${imgSource}" alt="${m.title || 'Memory'}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline';"><span style="display:none;">${m.icon || '🌸'}</span>
+          `;
+        } else {
+          photoContent = `<span>${m.icon || '🌸'}</span>`;
+        }
 
         pol.innerHTML = `
           <div class="polaroid-photo" style="background: ${m.colorGradient || '#fce7f3'};">
@@ -606,6 +618,22 @@
           <div class="polaroid-title">${m.title}</div>
           <div class="polaroid-caption">${m.caption}</div>
         `;
+
+        const photoEl = pol.querySelector('.polaroid-photo');
+        const vid = photoEl?.querySelector('video');
+        if (vid) {
+          photoEl.style.cursor = 'pointer';
+          photoEl.title = 'Tap to play or pause video';
+          photoEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (vid.paused) {
+              vid.play();
+            } else {
+              vid.pause();
+            }
+          });
+        }
+
         grid.appendChild(pol);
       });
       letterBody.appendChild(grid);

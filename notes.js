@@ -116,14 +116,17 @@ window.BIRTHDAY_DATA = {
       preview: "Little moments that became my fondest memories...",
       content: {
         salutation: "A Few of My Favorite Memories With You:",
-        // 📸 Drop your photos into the "images" folder (e.g. "images/photo1.jpg") or use an online URL!
-        // Leave image empty ("") to show the colorful floral icon fallback.
+        // 📸 Drop your photos or videos into the "images" folder (or use an online URL)!
+        // Supports: images (.jpg, .png, .webp) AND live videos (.mp4, .mov, .webm)
+        // You can set `image: "images/photo.jpg"` or `video: "images/clip.mp4"`.
+        // Videos will autoplay seamlessly on loop like living Harry-Potter style polaroid cards!
         memories: [
           {
             title: "Lavender Fields at Sunset",
             date: "Summer Evening",
             caption: "The twilight sky was purple and gold, but I couldn't stop looking at you.",
             image: "", // e.g. "images/photo1.jpg" or "https://..."
+            video: "", // e.g. "images/video1.mp4" (leave empty if using photo)
             colorGradient: "linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%)",
             icon: "🌸"
           },
@@ -132,6 +135,7 @@ window.BIRTHDAY_DATA = {
             date: "Spring Morning",
             caption: "Watching you light up picking fresh blooms and fragrant lavender.",
             image: "", // e.g. "images/photo2.jpg"
+            video: "", // e.g. "images/video2.mp4"
             colorGradient: "linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 100%)",
             icon: "🌷"
           },
@@ -140,6 +144,7 @@ window.BIRTHDAY_DATA = {
             date: "Autumn Afternoon",
             caption: "Hot tea, soft blankets, gentle raindrops against the window with you.",
             image: "", // e.g. "images/photo3.jpg"
+            video: "",
             colorGradient: "linear-gradient(135deg, #c7d2fe 0%, #e0e7ff 100%)",
             icon: "🌧️"
           },
@@ -148,6 +153,7 @@ window.BIRTHDAY_DATA = {
             date: "Winter Night",
             caption: "Hands held tight in coat pockets, walking nowhere in particular.",
             image: "", // e.g. "images/photo4.jpg"
+            video: "",
             colorGradient: "linear-gradient(135deg, #ddd6fe 0%, #a78bfa 100%)",
             icon: "✨"
           }

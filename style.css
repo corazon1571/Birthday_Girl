@@ -1762,7 +1762,8 @@ dialog[open]::backdrop {
   overflow: hidden;
 }
 
-.polaroid-photo img {
+.polaroid-photo img,
+.polaroid-photo video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1771,8 +1772,28 @@ dialog[open]::backdrop {
   transition: transform 0.4s ease;
 }
 
-.polaroid-card:hover .polaroid-photo img {
+.polaroid-card:hover .polaroid-photo img,
+.polaroid-card:hover .polaroid-photo video {
   transform: scale(1.06);
+}
+
+.video-indicator-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(46, 16, 101, 0.7);
+  backdrop-filter: blur(4px);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .polaroid-title {
