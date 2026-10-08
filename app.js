@@ -481,7 +481,7 @@
         const isTomorrow = tomorrow.getFullYear() === bDate.getFullYear() &&
                            tomorrow.getMonth() === bDate.getMonth() &&
                            tomorrow.getDate() === bDate.getDate();
-
+//it's today
         if (isSameDay) {
           badgeEl.textContent = '🎉 Happy Birthday Today! • October 9th 🎂';
         } else if (isTomorrow) {
