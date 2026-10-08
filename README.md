@@ -46,10 +46,15 @@ Then open `http://localhost:3000` in your browser.
 
 ---
 
-## ✍️ How to Personalize the Notes
+## 🔒 Creator Mode & Privacy (She Will Never See Edit Buttons!)
 
-You can customize the messages in two ways:
-1. **Directly in the Web App**: Click the **"✍️ Edit Notes"** button in the top navigation bar. Enter her name, your name, date, and messages, then click **"Save & Apply"**.
-2. **In `notes.js`**: Open [notes.js](file:///c:/Users/user/Birthday/notes.js) in your code editor and edit the text directly.
+When your girlfriend opens the website, **all edit buttons are 100% hidden by default**. She will only see the pure romantic birthday celebration with zero editing controls.
 
-With love, happy birthday celebrating! 🌸
+**For You (How to Edit):**
+- **Option 1**: Edit [notes.js](file:///c:/Users/user/Birthday/notes.js) directly on your computer before publishing.
+- **Option 2 (In-Browser)**:
+  - Add `?edit=true` to your URL (e.g. `http://localhost:4173/?edit=true` or `https://your-site.vercel.app/?edit=true`)
+  - Or press **`Ctrl + Shift + E`** on your keyboard
+  - Or tap your name / sign-off at the bottom footer **5 times** to toggle Creator Mode!
+
+With love, happy birthday celebrating! 💜🪻

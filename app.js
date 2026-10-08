@@ -912,6 +912,43 @@
 
     // Cake interactions
     initCakeInteractions();
+
+    // --- CREATOR / RECIPIENT PRIVACY MODE ---
+    // By default, all "Edit" buttons are 100% HIDDEN so your girlfriend sees a clean, magical gift!
+    // To access the editor anytime, either:
+    // 1. Add ?edit=true to the URL (e.g. http://localhost:4173/?edit=true)
+    // 2. Press Ctrl + Shift + E
+    // 3. Tap your signature at the very bottom of the page 5 times!
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('edit') === 'true' || urlParams.get('admin') === 'true') {
+      document.body.classList.add('edit-mode');
+    }
+
+    // Secret keyboard shortcut (Ctrl + Shift + E)
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'E' || e.key === 'e')) {
+        e.preventDefault();
+        document.body.classList.toggle('edit-mode');
+        playSoundEffect('chime');
+      }
+    });
+
+    // Secret tap on partner signature in footer
+    let secretTapCount = 0;
+    const partnerEl = document.getElementById('footerPartnerName');
+    if (partnerEl) {
+      partnerEl.style.cursor = 'pointer';
+      partnerEl.title = 'Special Birthday Love';
+      partnerEl.addEventListener('click', () => {
+        secretTapCount++;
+        if (secretTapCount >= 5) {
+          secretTapCount = 0;
+          document.body.classList.toggle('edit-mode');
+          playSoundEffect('chime');
+          triggerCelebrationConfetti();
+        }
+      });
+    }
   }
 
   // Document Ready

@@ -209,6 +209,21 @@ body {
   font-size: 1.05rem;
 }
 
+/* Creator / Editor Controls are completely hidden for recipient by default */
+.creator-only {
+  display: none !important;
+}
+
+body.edit-mode .creator-only {
+  display: inline-flex !important;
+  animation: fadeInCreator 0.4s ease-out;
+}
+
+@keyframes fadeInCreator {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 /* Floating Audio Bar */
 .audio-control-bar {
   position: fixed;
