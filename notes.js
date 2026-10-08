@@ -19,6 +19,17 @@ window.BIRTHDAY_DATA = {
   customMusicUrl: "", // e.g. "https://example.com/your-song.mp3" (leave empty for built-in romantic melody)
   musicTitle: "A Melody For You ♫",
 
+  // 💜 Birthday Whispers & Compliments Slideshow (shown in Hero section)
+  compliments: [
+    "Your laughter is my favorite song in the entire universe. You make every ordinary moment feel like poetry.",
+    "The world is softer, kinder, and so much brighter simply because you were born.",
+    "You have a soul made of wildflowers and pure grace—delicate, resilient, and breathtakingly beautiful.",
+    "Watching your eyes light up when you smile is the sweetest sight I will ever know.",
+    "You bring warmth into every single room you enter, effortlessly making people feel loved and safe.",
+    "Thank you for being my safest haven, my sweetest comfort, and my greatest adventure.",
+    "On your birthday and every single day that follows: you are cherished beyond all words and measure."
+  ],
+
   // 💌 The Envelopes & Cards
   envelopes: [
     {

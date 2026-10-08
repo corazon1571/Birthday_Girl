@@ -98,21 +98,30 @@
         Wishing the most beautiful soul the happiest birthday. You make every day bloom.
       </p>
 
-      <!-- Interactive Countdown / Days of Sunshine widget -->
-      <div class="countdown-card" id="countdownCard">
-        <div class="countdown-header">
-          <span class="countdown-icon">⏳</span>
-          <span class="countdown-label" id="countdownLabel">Counting down to your special day</span>
+      <!-- Interactive Birthday Whispers & Compliments Slideshow -->
+      <div class="compliment-card" id="complimentCard">
+        <div class="compliment-top">
+          <span class="compliment-badge">💜 Birthday Whispers For You</span>
+          <span class="compliment-count" id="complimentCount">1 of 7</span>
         </div>
-        <div class="countdown-timer" id="countdownTimer">
-          <div class="time-block"><span class="time-num" id="daysVal">00</span><span class="time-txt">Days</span></div>
-          <div class="time-sep">:</div>
-          <div class="time-block"><span class="time-num" id="hoursVal">00</span><span class="time-txt">Hours</span></div>
-          <div class="time-sep">:</div>
-          <div class="time-block"><span class="time-num" id="minsVal">00</span><span class="time-txt">Mins</span></div>
-          <div class="time-sep">:</div>
-          <div class="time-block"><span class="time-num" id="secsVal">00</span><span class="time-txt">Secs</span></div>
+        <div class="compliment-quote-wrap">
+          <span class="quote-mark left" aria-hidden="true">“</span>
+          <p class="compliment-text" id="complimentText">
+            Your laughter is my favorite song in the entire universe. You make every ordinary moment feel like poetry.
+          </p>
+          <span class="quote-mark right" aria-hidden="true">”</span>
         </div>
+        <div class="compliment-author" id="complimentAuthor">
+          — Yours Always ♡
+        </div>
+        <div class="compliment-controls">
+          <button id="prevComplimentBtn" class="compliment-nav-btn" aria-label="Previous whisper" title="Previous whisper">‹</button>
+          <div class="compliment-dots" id="complimentDots" aria-label="Compliment slide dots"></div>
+          <button id="nextComplimentBtn" class="compliment-nav-btn" aria-label="Next whisper" title="Next whisper">›</button>
+        </div>
+        <button id="randomComplimentBtn" class="pill-btn text-only compliment-shuffle-btn" title="Whisper another thought">
+          <span>✨ Whisper Another Thought</span>
+        </button>
       </div>
 
       <a href="#lettersGarden" class="scroll-down-hint" aria-label="Scroll to letters garden">

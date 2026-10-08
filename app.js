@@ -21,7 +21,11 @@
           localStorage.setItem(STORAGE_KEY, stored);
         }
         const parsed = JSON.parse(stored);
-        return { ...window.BIRTHDAY_DATA, ...parsed };
+        return {
+          ...window.BIRTHDAY_DATA,
+          ...parsed,
+          compliments: (parsed.compliments && parsed.compliments.length) ? parsed.compliments : window.BIRTHDAY_DATA.compliments
+        };
       }
     } catch (e) {
       console.warn('LocalStorage unavailable, using default notes.js data', e);
@@ -314,58 +318,103 @@
     }, 4500);
   }
 
-  // --- COUNTDOWN & CELEBRATION TIMER ---
-  function updateCountdown() {
-    const targetDateStr = appData.birthdayDate;
-    if (!targetDateStr) return;
+  // --- BIRTHDAY WHISPERS & COMPLIMENT SLIDESHOW ENGINE ---
+  let currentComplimentIdx = 0;
+  let complimentTimer = null;
 
-    const now = new Date();
-    // Parse target date as local start of day
-    const [y, m, d] = targetDateStr.split('-').map(Number);
-    let target = new Date(y, m - 1, d);
-
-    // If birthday date is in the past this year, show anniversary or countdown to next
-    const diff = target.getTime() - now.getTime();
-
-    const daysEl = document.getElementById('daysVal');
-    const hoursEl = document.getElementById('hoursVal');
-    const minsEl = document.getElementById('minsVal');
-    const secsEl = document.getElementById('secsVal');
-    const labelEl = document.getElementById('countdownLabel');
-    const badgeEl = document.getElementById('heroDateBadge');
-
-    if (diff <= 0 && Math.abs(diff) < 24 * 60 * 60 * 1000) {
-      // It's today!
-      if (daysEl) daysEl.textContent = '00';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minsEl) minsEl.textContent = '00';
-      if (secsEl) secsEl.textContent = '00';
-      if (labelEl) labelEl.textContent = '🎉 TODAY IS YOUR SPECIAL DAY! HAPPY BIRTHDAY! 🌸';
-      if (badgeEl) badgeEl.textContent = 'Happy Birthday Today!';
-      return;
-    }
-
-    if (diff < 0) {
-      // Date has passed this year: count from it or celebrate
-      const daysPassed = Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24));
-      if (labelEl) labelEl.textContent = `Celebrating You Every Day (${daysPassed} days since your birthday)`;
-      if (badgeEl) badgeEl.textContent = `A Year Full of Bloom`;
-      if (daysEl) daysEl.textContent = String(daysPassed).padStart(2, '0');
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-    if (minsEl) minsEl.textContent = String(mins).padStart(2, '0');
-    if (secsEl) secsEl.textContent = String(secs).padStart(2, '0');
-    if (badgeEl) badgeEl.textContent = `${days} Days Until Your Birthday`;
+  function getComplimentsList() {
+    return (appData.compliments && appData.compliments.length > 0)
+      ? appData.compliments
+      : [
+          "Your laughter is my favorite song in the entire universe. You make every ordinary moment feel like poetry.",
+          "The world is softer, kinder, and so much brighter simply because you were born.",
+          "You have a soul made of wildflowers and pure grace—delicate, resilient, and breathtakingly beautiful.",
+          "Watching your eyes light up when you smile is the sweetest sight I will ever know.",
+          "You bring warmth into every single room you enter, effortlessly making people feel loved and safe.",
+          "Thank you for being my safest haven, my sweetest comfort, and my greatest adventure.",
+          "On your birthday and every single day that follows: you are cherished beyond all words and measure."
+        ];
   }
-  setInterval(updateCountdown, 1000);
+
+  function showCompliment(index, animate = true) {
+    const list = getComplimentsList();
+    if (list.length === 0) return;
+
+    currentComplimentIdx = (index + list.length) % list.length;
+    const textEl = document.getElementById('complimentText');
+    const countEl = document.getElementById('complimentCount');
+    const authorEl = document.getElementById('complimentAuthor');
+    const dotsHolder = document.getElementById('complimentDots');
+
+    if (countEl) countEl.textContent = `${currentComplimentIdx + 1} of ${list.length}`;
+    if (authorEl) authorEl.textContent = `— ${appData.partnerName || 'Yours Always'} ♡`;
+
+    if (dotsHolder) {
+      dotsHolder.innerHTML = '';
+      list.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = `compliment-dot ${i === currentComplimentIdx ? 'active' : ''}`;
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', `Compliment ${i + 1}`);
+        dot.addEventListener('click', () => {
+          showCompliment(i);
+          resetComplimentAutoplay();
+        });
+        dotsHolder.appendChild(dot);
+      });
+    }
+
+    if (!textEl) return;
+
+    if (animate) {
+      textEl.classList.add('fade-out');
+      setTimeout(() => {
+        textEl.textContent = list[currentComplimentIdx];
+        textEl.classList.remove('fade-out');
+      }, 250);
+    } else {
+      textEl.textContent = list[currentComplimentIdx];
+    }
+  }
+
+  function nextCompliment() {
+    showCompliment(currentComplimentIdx + 1);
+  }
+
+  function prevCompliment() {
+    showCompliment(currentComplimentIdx - 1);
+  }
+
+  function randomCompliment() {
+    playSoundEffect('chime');
+    const list = getComplimentsList();
+    if (list.length <= 1) return;
+    let nextIdx;
+    do {
+      nextIdx = Math.floor(Math.random() * list.length);
+    } while (nextIdx === currentComplimentIdx);
+    showCompliment(nextIdx);
+    resetComplimentAutoplay();
+  }
+
+  function startComplimentAutoplay() {
+    stopComplimentAutoplay();
+    complimentTimer = setInterval(() => {
+      nextCompliment();
+    }, 6000);
+  }
+
+  function stopComplimentAutoplay() {
+    if (complimentTimer) {
+      clearInterval(complimentTimer);
+      complimentTimer = null;
+    }
+  }
+
+  function resetComplimentAutoplay() {
+    stopComplimentAutoplay();
+    startComplimentAutoplay();
+  }
 
   // --- RENDER HERO & METADATA ---
   function renderHero() {
@@ -373,13 +422,15 @@
     const heroSub = document.getElementById('heroSubtitle');
     const partnerFooter = document.getElementById('footerPartnerName');
     const vaseTag = document.getElementById('vaseTag');
+    const badgeEl = document.getElementById('heroDateBadge');
 
     if (heroName) heroName.textContent = appData.recipientName || 'My Love';
     if (heroSub) heroSub.textContent = appData.subtitleMessage || '';
     if (partnerFooter) partnerFooter.textContent = appData.partnerName || 'Yours Always';
     if (vaseTag) vaseTag.textContent = `For ${appData.recipientName || 'You'} ♡`;
+    if (badgeEl) badgeEl.textContent = 'Celebrating Your Special Day Today ✨';
 
-    updateCountdown();
+    showCompliment(currentComplimentIdx, false);
   }
 
   // --- RENDER ENVELOPES GRID ---
@@ -877,6 +928,24 @@
     document.getElementById('volumeSlider')?.addEventListener('input', (e) => {
       if (externalAudio) externalAudio.volume = parseFloat(e.target.value);
     });
+
+    // Compliment & Whispers Slideshow Controls
+    document.getElementById('prevComplimentBtn')?.addEventListener('click', () => {
+      prevCompliment();
+      resetComplimentAutoplay();
+    });
+    document.getElementById('nextComplimentBtn')?.addEventListener('click', () => {
+      nextCompliment();
+      resetComplimentAutoplay();
+    });
+    document.getElementById('randomComplimentBtn')?.addEventListener('click', randomCompliment);
+
+    const complimentCardEl = document.getElementById('complimentCard');
+    if (complimentCardEl) {
+      complimentCardEl.addEventListener('mouseenter', stopComplimentAutoplay);
+      complimentCardEl.addEventListener('mouseleave', startComplimentAutoplay);
+    }
+    startComplimentAutoplay();
 
     // Letter Modal
     document.getElementById('closeLetterBtn')?.addEventListener('click', closeLetterModal);
