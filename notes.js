@@ -1,6 +1,6 @@
 /**
  * ====================================================================
- * 🌸 BIRTHDAY CONFIGURATION & LOVE NOTES 🌸
+ * 💜 ENCHANTED LAVENDER BIRTHDAY CONFIGURATION & LOVE NOTES 💜
  * ====================================================================
  * You can edit all details below!
  * - Change the names, date, envelope titles, letters, and memories.
@@ -9,11 +9,11 @@
  */
 
 window.BIRTHDAY_DATA = {
-  // 💖 Recipient Information
+  // 💜 Recipient Information
   recipientName: "My Love",
   partnerName: "Yours Always",
   birthdayDate: "2026-10-18", // YYYY-MM-DD
-  subtitleMessage: "Wishing the most beautiful soul the happiest birthday. You make every day bloom.",
+  subtitleMessage: "Wishing the most beautiful soul the happiest birthday. You make every day bloom in shades of wonder.",
 
   // 🎵 Audio Settings (Default romantic acoustic melody is generated in real-time, or you can paste an MP3 audio URL here)
   customMusicUrl: "", // e.g. "https://example.com/your-song.mp3" (leave empty for built-in romantic melody)
@@ -27,8 +27,8 @@ window.BIRTHDAY_DATA = {
       tag: "Open First",
       title: "The Story of You",
       subtitle: "A love letter for your special day",
-      sealColor: "#d94f70", // Rose crimson
-      flowerIcon: "🌸",
+      sealColor: "#7c3aed", // Royal Amethyst
+      flowerIcon: "🪻",
       stampText: "FIRST LOVE",
       preview: "Before this day begins, I wanted to tell you how deeply you mean to me...",
       content: {
@@ -49,15 +49,15 @@ window.BIRTHDAY_DATA = {
       tag: "Reasons Why",
       title: "Little Things I Adore",
       subtitle: "Ten little things that make you magical",
-      sealColor: "#e67e9f", // Blush pink
-      flowerIcon: "🌷",
+      sealColor: "#9333ea", // Wisteria Violet
+      flowerIcon: "💜",
       stampText: "REASONS",
       preview: "All the little things about you that I carry in my heart...",
       content: {
         salutation: "Ten Reasons Why You Are My Favorite Human:",
         reasons: [
           { emoji: "✨", title: "The way your eyes crinkle", desc: "Whenever you laugh at something truly funny." },
-          { emoji: "🌸", title: "Your love for flowers", desc: "How you stop to admire little blossoms along the sidewalk." },
+          { emoji: "🪻", title: "Your love for flowers", desc: "How you stop to admire little blossoms along the sidewalk." },
           { emoji: "☕", title: "Our quiet mornings", desc: "Sitting together with coffee, where silence never feels empty." },
           { emoji: "🤍", title: "Your gentle kindness", desc: "The way you always think about how other people feel." },
           { emoji: "🎶", title: "Your little happy dances", desc: "When your favorite food arrives or a song you love starts playing." },
@@ -65,7 +65,7 @@ window.BIRTHDAY_DATA = {
           { emoji: "🫂", title: "Your warm hugs", desc: "The safest, coziest place in the entire world." },
           { emoji: "🌙", title: "Late-night conversations", desc: "Whispering our thoughts until we both drift to sleep." },
           { emoji: "💫", title: "Your unwavering strength", desc: "How resilient, graceful, and inspiring you are every day." },
-          { emoji: "💖", title: "Simply being you", desc: "Because you are my favorite miracle." }
+          { emoji: "💜", title: "Simply being you", desc: "Because you are my favorite miracle." }
         ],
         closing: "And a million more reasons I discover every day.",
         signature: "Forever admiring you ♡"
@@ -77,8 +77,8 @@ window.BIRTHDAY_DATA = {
       tag: "Wishes",
       title: "Garden of Wishes",
       subtitle: "Blessings and wishes for your new year",
-      sealColor: "#9b5de5", // Lilac purple
-      flowerIcon: "🌺",
+      sealColor: "#a855f7", // Glowing Lavender
+      flowerIcon: "🌸",
       stampText: "BLESSINGS",
       preview: "Every petal in this garden carries a wish for your journey ahead...",
       content: {
@@ -99,7 +99,7 @@ window.BIRTHDAY_DATA = {
       tag: "Memories",
       title: "Our Polaroid Album",
       subtitle: "Snapshots of sweet moments together",
-      sealColor: "#f15bb5", // Rose quartz
+      sealColor: "#6d28d9", // Deep Twilight Violet
       flowerIcon: "💐",
       stampText: "MEMORIES",
       preview: "Little moments that became my fondest memories...",
@@ -107,31 +107,31 @@ window.BIRTHDAY_DATA = {
         salutation: "A Few of My Favorite Memories With You:",
         memories: [
           {
-            title: "The Golden Sunset",
+            title: "Lavender Fields at Sunset",
             date: "Summer Evening",
-            caption: "The sky was pink and gold, but I couldn't stop looking at you.",
-            colorGradient: "linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)",
-            icon: "🌅"
+            caption: "The twilight sky was purple and gold, but I couldn't stop looking at you.",
+            colorGradient: "linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%)",
+            icon: "🪻"
           },
           {
             title: "Flower Market Stroll",
             date: "Spring Morning",
-            caption: "Watching you light up picking fresh peonies and baby's breath.",
-            colorGradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+            caption: "Watching you light up picking fresh blooms and fragrant lavender.",
+            colorGradient: "linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 100%)",
             icon: "🌷"
           },
           {
             title: "Cozy Rainy Day",
             date: "Autumn Afternoon",
-            caption: "Hot tea, soft blankets, soft rain against the window with you.",
-            colorGradient: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
+            caption: "Hot tea, soft blankets, gentle raindrops against the window with you.",
+            colorGradient: "linear-gradient(135deg, #c7d2fe 0%, #e0e7ff 100%)",
             icon: "🌧️"
           },
           {
             title: "Under The City Lights",
             date: "Winter Night",
             caption: "Hands held tight in coat pockets, walking nowhere in particular.",
-            colorGradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+            colorGradient: "linear-gradient(135deg, #ddd6fe 0%, #a78bfa 100%)",
             icon: "✨"
           }
         ],
@@ -145,8 +145,8 @@ window.BIRTHDAY_DATA = {
       tag: "Promise",
       title: "Love Vouchers & Promises",
       subtitle: "Little promises you can redeem anytime",
-      sealColor: "#ee6c4d", // Coral terracotta
-      flowerIcon: "🌹",
+      sealColor: "#8b5cf6", // Soft Lavender
+      flowerIcon: "🌺",
       stampText: "COUPONS",
       preview: "Redeemable anytime, no expiration date...",
       content: {
@@ -168,7 +168,7 @@ window.BIRTHDAY_DATA = {
       tag: "Celebration",
       title: "Make a Birthday Wish",
       subtitle: "Blow the candles & make a secret wish",
-      sealColor: "#d4a373", // Vintage gold
+      sealColor: "#7e22ce", // Enchanted Amethyst
       flowerIcon: "🎂",
       stampText: "WISH 2026",
       preview: "An interactive birthday cake waiting just for you...",
@@ -176,7 +176,7 @@ window.BIRTHDAY_DATA = {
         isCakeCard: true,
         salutation: "Close Your Eyes & Make a Wish!",
         instruction: "Tap the candles to blow them out and reveal your birthday surprise!",
-        revealedMessage: "May every single wish you made in your heart come true this year! You deserve all the stars in the night sky. Happy Birthday! 🎉💖"
+        revealedMessage: "May every single wish you made in your heart come true this year! You deserve all the stars in the night sky. Happy Birthday! 🎉💜"
       }
     }
   ],
@@ -184,52 +184,52 @@ window.BIRTHDAY_DATA = {
   // 💐 Interactive Bouquet Builder Flowers & Meanings
   bouquetFlowers: [
     {
-      id: "peony",
-      name: "Pink Peonies",
-      symbolism: "Romance & Prosperity",
-      color: "#f472b6",
-      icon: "🌸",
-      quote: "Soft, lush, and full of grace—just like your sweet heart."
-    },
-    {
-      id: "rose",
-      name: "English Garden Roses",
-      symbolism: "Deep Love & Devotion",
-      color: "#fb7185",
-      icon: "🌹",
-      quote: "Classic and timeless, reminding me how much I adore you every single second."
-    },
-    {
-      id: "lily",
-      name: "White Madonna Lilies",
-      symbolism: "Purity & Sincerity",
-      color: "#f8fafc",
-      icon: "🪻",
-      quote: "A testament to the purity of your soul and your gentle presence."
-    },
-    {
       id: "lavender",
       name: "Provence Lavender",
-      symbolism: "Serenity & Peace",
-      color: "#c084fc",
-      icon: "🌾",
-      quote: "Calming and comforting, like falling asleep in your arms."
+      symbolism: "Serenity, Grace & Peace",
+      color: "#a855f7",
+      icon: "🪻",
+      quote: "Calming, fragrant, and gentle—reminding me of how peaceful the world feels with you."
     },
     {
-      id: "sunflower",
-      name: "Mini Sunflowers",
-      symbolism: "Warmth & Adoration",
-      color: "#facc15",
-      icon: "🌻",
-      quote: "You bring pure sunshine even into the cloudiest days."
+      id: "wisteria",
+      name: "Enchanted Wisteria",
+      symbolism: "Devotion & Lifelong Love",
+      color: "#c084fc",
+      icon: "🍇",
+      quote: "Cascading purple blooms representing deep affection and sweet memories."
+    },
+    {
+      id: "orchid",
+      name: "Velvet Purple Orchid",
+      symbolism: "Rare Beauty & Charm",
+      color: "#9333ea",
+      icon: "🌸",
+      quote: "Exotic and mesmerizing, just like your radiant smile."
+    },
+    {
+      id: "peony",
+      name: "Lilac Peonies",
+      symbolism: "Romance & Good Fortune",
+      color: "#d8b4fe",
+      icon: "🌺",
+      quote: "Lush petals overflowing with love, joy, and blessings for your year."
+    },
+    {
+      id: "violet",
+      name: "Sweet Garden Violets",
+      symbolism: "Faithfulness & Loyalty",
+      color: "#7e22ce",
+      icon: "💐",
+      quote: "Delicate and true, carrying my promise to always cherish you."
     },
     {
       id: "babysbreath",
       name: "Baby's Breath",
       symbolism: "Everlasting Love",
-      color: "#e2e8f0",
+      color: "#f3e8ff",
       icon: "✨",
-      quote: "Tiny constellations of flowers that promise forever."
+      quote: "Tiny constellations of blossoms that whisper forever."
     }
   ]
 };

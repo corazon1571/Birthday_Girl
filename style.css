@@ -1,37 +1,49 @@
 /* ==========================================================================
-   🌸 ROMANTIC PASTEL GARDEN BIRTHDAY EXPERIENCE - DESIGN SYSTEM 🌸
+   💜 ENCHANTED LAVENDER & WISTERIA GARDEN - DESIGN SYSTEM 💜
    ========================================================================== */
 
 :root {
-  /* Color Palette - Romantic Blush, Rose Gold, Warm Cream, Sage */
-  --bg-gradient-start: #fff9fa;
-  --bg-gradient-mid: #fdf2f4;
-  --bg-gradient-end: #fcedf2;
+  /* Color Palette - Dreamy Lavender, Royal Amethyst, Soft Lilac, Pearl & Warm Gold */
+  --bg-gradient-start: #faf5ff;
+  --bg-gradient-mid: #f6eefe;
+  --bg-gradient-end: #ede4fc;
   
-  --primary-pink: #f472b6;
-  --primary-rose: #e11d48;
-  --blush-100: #fce7f3;
-  --blush-200: #fbcfe8;
-  --blush-300: #f9a8d4;
-  --blush-deep: #db2777;
+  --primary-purple: #9333ea;
+  --primary-lavender: #a855f7;
+  --primary-deep: #7e22ce;
+  --primary-wisteria: #c084fc;
+  --primary-glow: #e9d5ff;
 
-  --wax-seal-rose: #c0264b;
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --purple-950: #3b0764;
+
+  --wax-seal-amethyst: #7e22ce;
+  --wax-seal-lavender: #8b5cf6;
   --wax-seal-gold: #c59b27;
-  --wax-seal-shadow: rgba(140, 24, 50, 0.35);
+  --wax-seal-shadow: rgba(88, 28, 135, 0.4);
 
   --accent-gold: #d4af37;
-  --accent-gold-soft: #fef3c7;
+  --accent-gold-soft: #fef9c3;
   --sage-green: #65a30d;
-  --sage-soft: #ecfccb;
+  --sage-soft: #f4fce3;
 
-  --text-primary: #4a1525;
-  --text-secondary: #7e3046;
-  --text-muted: #a26575;
-  --text-light: #fff;
+  --text-primary: #3b0764;     /* Deep royal plum / violet */
+  --text-secondary: #581c87;   /* Rich purple */
+  --text-muted: #7e22ce;       /* Soft amethyst */
+  --text-light: #ffffff;
 
-  --paper-cream: #fffdf9;
-  --paper-border: #f2e6dc;
-  --paper-shadow: 0 14px 38px rgba(90, 20, 40, 0.12), 0 5px 12px rgba(90, 20, 40, 0.08);
+  --paper-cream: #fdfcff;
+  --paper-border: #ede4fc;
+  --paper-shadow: 0 16px 40px rgba(59, 7, 100, 0.12), 0 6px 14px rgba(59, 7, 100, 0.06);
 
   /* Fonts */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -63,7 +75,7 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--text-primary);
-  background: radial-gradient(circle at 15% 15%, #fff0f5 0%, #fff8f8 40%, #fdf2f4 75%, #fcedf2 100%);
+  background: radial-gradient(circle at 15% 15%, #fcf8ff 0%, #f6eefe 40%, #f0e3ff 75%, #ebe0fc 100%);
   background-attachment: fixed;
   min-height: 100vh;
   line-height: 1.6;
@@ -108,10 +120,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(255, 253, 250, 0.75);
+  background: rgba(253, 250, 255, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(244, 114, 182, 0.2);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 .nav-brand {
@@ -127,6 +139,11 @@ body {
 .nav-flower {
   font-size: 1.4rem;
   animation: floatSubtle 3s ease-in-out infinite;
+}
+
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 .nav-actions {
@@ -152,28 +169,28 @@ body {
 }
 
 .pill-btn.primary {
-  background: linear-gradient(135deg, #f472b6 0%, #e11d48 100%);
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 60%, #6b21a8 100%);
   color: white;
-  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.3);
 }
 
 .pill-btn.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
-  filter: brightness(1.05);
+  box-shadow: 0 6px 18px rgba(126, 34, 206, 0.4);
+  filter: brightness(1.08);
 }
 
 .pill-btn.secondary {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--text-primary);
-  border-color: rgba(244, 114, 182, 0.35);
+  border-color: rgba(168, 85, 247, 0.35);
 }
 
 .pill-btn.secondary:hover {
-  background: #fff;
-  border-color: var(--primary-pink);
+  background: #ffffff;
+  border-color: var(--primary-lavender);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(244, 114, 182, 0.15);
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.2);
 }
 
 .pill-btn.text-only {
@@ -183,8 +200,8 @@ body {
 }
 
 .pill-btn.text-only:hover {
-  color: var(--primary-rose);
-  background: rgba(252, 231, 243, 0.5);
+  color: var(--primary-purple);
+  background: rgba(243, 232, 255, 0.6);
 }
 
 .pill-btn.big-btn {
@@ -202,18 +219,18 @@ body {
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0.9rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: var(--radius-full);
-  border: 1px solid rgba(244, 114, 182, 0.3);
-  box-shadow: 0 8px 24px rgba(74, 21, 37, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 8px 24px rgba(59, 7, 100, 0.14);
   transition: var(--transition-smooth);
 }
 
 .audio-control-bar:hover {
-  box-shadow: 0 12px 30px rgba(74, 21, 37, 0.18);
-  border-color: var(--primary-pink);
+  box-shadow: 0 12px 30px rgba(59, 7, 100, 0.2);
+  border-color: var(--primary-lavender);
 }
 
 .audio-btn {
@@ -239,7 +256,7 @@ body {
 .music-waves span {
   width: 3px;
   height: 4px;
-  background: var(--primary-pink);
+  background: var(--primary-lavender);
   border-radius: 2px;
   transition: height 0.2s ease;
 }
@@ -258,7 +275,7 @@ body {
   width: 60px;
   height: 4px;
   appearance: none;
-  background: #fbcfe8;
+  background: #e9d5ff;
   border-radius: 2px;
   cursor: pointer;
 }
@@ -267,7 +284,7 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--primary-rose);
+  background: var(--primary-deep);
   cursor: pointer;
 }
 
@@ -297,15 +314,15 @@ body {
 .section-tag {
   display: inline-block;
   padding: 0.3rem 0.9rem;
-  background: rgba(252, 231, 243, 0.85);
-  color: var(--primary-rose);
+  background: rgba(243, 232, 255, 0.85);
+  color: var(--primary-deep);
   border-radius: var(--radius-full);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
-  border: 1px solid rgba(244, 114, 182, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .section-title {
@@ -345,7 +362,7 @@ body {
 .wreath-svg {
   width: 100%;
   height: 100%;
-  color: var(--primary-pink);
+  color: var(--primary-wisteria);
   animation: rotateWreath 40s linear infinite;
 }
 
@@ -360,7 +377,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 3rem;
-  filter: drop-shadow(0 4px 8px rgba(244, 114, 182, 0.3));
+  filter: drop-shadow(0 4px 10px rgba(168, 85, 247, 0.35));
   animation: pulseFloral 3s ease-in-out infinite;
 }
 
@@ -374,13 +391,13 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 1rem;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(244, 114, 182, 0.3);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   border-radius: var(--radius-full);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-secondary);
-  box-shadow: 0 4px 12px rgba(244, 114, 182, 0.1);
+  box-shadow: 0 4px 12px rgba(126, 34, 206, 0.1);
   margin-bottom: 1.5rem;
 }
 
@@ -388,8 +405,8 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--primary-rose);
-  box-shadow: 0 0 8px var(--primary-rose);
+  background: var(--primary-lavender);
+  box-shadow: 0 0 8px var(--primary-lavender);
   animation: pulseDot 2s infinite;
 }
 
@@ -411,7 +428,7 @@ body {
 .highlight-name {
   font-family: var(--font-script);
   font-size: 1.15em;
-  background: linear-gradient(135deg, #e11d48 0%, #db2777 60%, #9333ea 100%);
+  background: linear-gradient(135deg, #7e22ce 0%, #a855f7 45%, #ec4899 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -430,11 +447,11 @@ body {
 
 /* Countdown Card */
 .countdown-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(244, 114, 182, 0.3);
-  box-shadow: 0 10px 30px rgba(74, 21, 37, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 10px 30px rgba(59, 7, 100, 0.08);
   border-radius: var(--radius-lg);
   padding: 1.5rem 2rem;
   margin-bottom: 2.75rem;
@@ -471,7 +488,7 @@ body {
   font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   line-height: 1;
 }
 
@@ -486,8 +503,8 @@ body {
 .time-sep {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #f472b6;
-  opacity: 0.6;
+  color: var(--primary-wisteria);
+  opacity: 0.8;
   margin-bottom: 0.75rem;
 }
 
@@ -505,7 +522,7 @@ body {
 }
 
 .scroll-down-hint:hover {
-  color: var(--primary-rose);
+  color: var(--primary-deep);
 }
 
 @keyframes bounceHint {
@@ -527,13 +544,13 @@ body {
 /* Individual Envelope Wrapper */
 .envelope-card-item {
   position: relative;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(244, 114, 182, 0.25);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
-  box-shadow: 0 10px 25px rgba(74, 21, 37, 0.06);
+  box-shadow: 0 10px 25px rgba(59, 7, 100, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -542,8 +559,8 @@ body {
 
 .envelope-card-item:hover {
   transform: translateY(-8px);
-  box-shadow: 0 18px 36px rgba(74, 21, 37, 0.12);
-  border-color: rgba(244, 114, 182, 0.5);
+  box-shadow: 0 18px 36px rgba(59, 7, 100, 0.14);
+  border-color: rgba(168, 85, 247, 0.5);
 }
 
 .envelope-meta-header {
@@ -558,8 +575,8 @@ body {
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--primary-rose);
-  opacity: 0.8;
+  color: var(--primary-deep);
+  opacity: 0.9;
 }
 
 .envelope-tag-pill {
@@ -567,9 +584,10 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.25rem 0.65rem;
-  background: var(--blush-100);
-  color: var(--primary-rose);
+  background: var(--purple-100);
+  color: var(--primary-deep);
   border-radius: var(--radius-full);
+  border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 /* 3D Realistic Physical Envelope Element */
@@ -577,9 +595,9 @@ body {
   position: relative;
   width: 260px;
   height: 170px;
-  background: #fdf6ee;
+  background: #fbf7ff;
   border-radius: 8px;
-  box-shadow: 0 8px 22px rgba(80, 20, 40, 0.14);
+  box-shadow: 0 8px 22px rgba(59, 7, 100, 0.12);
   cursor: pointer;
   perspective: 900px;
   overflow: visible;
@@ -595,7 +613,7 @@ body {
 .envelope-inside {
   position: absolute;
   inset: 0;
-  background: #faede0;
+  background: #f5ebff;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -607,8 +625,8 @@ body {
   left: 20px;
   right: 20px;
   height: 125px;
-  background: #fffdfb;
-  border: 1px solid #f2e2d5;
+  background: #ffffff;
+  border: 1px solid #e9d5ff;
   border-radius: 6px;
   padding: 0.75rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -630,7 +648,7 @@ body {
 
 .peek-line {
   height: 3px;
-  background: #fce7f3;
+  background: #f3e8ff;
   border-radius: 2px;
 }
 .peek-line:nth-child(1) { width: 85%; }
@@ -646,7 +664,7 @@ body {
   height: 0;
   border-left: 130px solid transparent;
   border-right: 130px solid transparent;
-  border-top: 95px solid #f8ebe0;
+  border-top: 95px solid #f3e8ff;
   transform-origin: top;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 4;
@@ -678,7 +696,7 @@ body {
   height: 0;
   border-left: 130px solid transparent;
   border-right: 130px solid transparent;
-  border-bottom: 95px solid #f6e6d8;
+  border-bottom: 95px solid #ede0fc;
 }
 
 .envelope-pocket-left {
@@ -690,7 +708,7 @@ body {
   height: 0;
   border-top: 85px solid transparent;
   border-bottom: 85px solid transparent;
-  border-left: 130px solid #f1ddcd;
+  border-left: 130px solid #e7d6fa;
 }
 
 .envelope-pocket-right {
@@ -702,7 +720,7 @@ body {
   height: 0;
   border-top: 85px solid transparent;
   border-bottom: 85px solid transparent;
-  border-right: 130px solid #f1ddcd;
+  border-right: 130px solid #e7d6fa;
 }
 
 /* Wax Seal with 3D Emboss & Monogram */
@@ -714,8 +732,8 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #e11d48 0%, #be123c 65%, #881337 100%);
-  box-shadow: 0 4px 10px rgba(136, 19, 55, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  background: radial-gradient(circle at 35% 35%, #9333ea 0%, #7e22ce 60%, #4c1d95 100%);
+  box-shadow: 0 4px 10px rgba(76, 29, 149, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.4);
   z-index: 5;
   display: flex;
   align-items: center;
@@ -728,8 +746,8 @@ body {
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(255, 255, 255, 0.3);
-  opacity: 0.7;
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+  opacity: 0.8;
 }
 
 .envelope-physical:hover .wax-seal {
@@ -765,12 +783,12 @@ body {
   width: 100%;
   padding: 0.6rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(244, 114, 182, 0.4);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(168, 85, 247, 0.4);
   font-family: var(--font-sans);
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -780,11 +798,11 @@ body {
 }
 
 .envelope-open-btn:hover {
-  background: var(--primary-rose);
+  background: var(--primary-deep);
   color: white;
-  border-color: var(--primary-rose);
+  border-color: var(--primary-deep);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.3);
 }
 
 /* ==========================================================================
@@ -799,13 +817,13 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(244, 114, 182, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: 0 14px 34px rgba(74, 21, 37, 0.08);
+  box-shadow: 0 14px 34px rgba(59, 7, 100, 0.08);
 }
 
 @media (max-width: 900px) {
@@ -840,7 +858,7 @@ body {
 
 .flower-picker-item {
   background: #ffffff;
-  border: 1px solid rgba(244, 114, 182, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.22);
   border-radius: var(--radius-md);
   padding: 1rem;
   text-align: center;
@@ -853,8 +871,8 @@ body {
 
 .flower-picker-item:hover {
   transform: translateY(-4px);
-  border-color: var(--primary-pink);
-  box-shadow: 0 6px 18px rgba(244, 114, 182, 0.18);
+  border-color: var(--primary-lavender);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.2);
 }
 
 .flower-picker-item:active {
@@ -893,14 +911,14 @@ body {
 .vase-card {
   width: 100%;
   max-width: 420px;
-  background: radial-gradient(circle at 50% 30%, #fff7fa 0%, #fff0f3 100%);
-  border: 1px solid rgba(244, 114, 182, 0.25);
+  background: radial-gradient(circle at 50% 30%, #faf5ff 0%, #f3e8ff 100%);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   border-radius: var(--radius-lg);
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: inset 0 2px 10px rgba(244, 114, 182, 0.08);
+  box-shadow: inset 0 2px 10px rgba(168, 85, 247, 0.08);
 }
 
 .vase-canvas-area {
@@ -937,7 +955,7 @@ body {
   font-size: 2.5rem;
   display: block;
   margin-bottom: 0.5rem;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 /* Blooming Stem Items in Vase */
@@ -956,7 +974,7 @@ body {
 
 .blooming-flower-icon {
   font-size: 2.5rem;
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
   animation: flowerSway 3s ease-in-out infinite alternate;
 }
 
@@ -970,12 +988,12 @@ body {
   position: relative;
   width: 140px;
   height: 130px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 12px 12px 35px 35px;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 10px 24px rgba(74, 21, 37, 0.12), inset 0 2px 10px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 24px rgba(59, 7, 100, 0.12), inset 0 2px 10px rgba(255, 255, 255, 0.7);
   z-index: 10;
   overflow: visible;
 }
@@ -986,7 +1004,7 @@ body {
   left: 0;
   right: 0;
   height: 70%;
-  background: linear-gradient(180deg, rgba(224, 242, 254, 0.4) 0%, rgba(186, 230, 253, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(233, 213, 255, 0.35) 0%, rgba(216, 180, 254, 0.55) 100%);
   border-radius: 0 0 33px 33px;
 }
 
@@ -1012,8 +1030,8 @@ body {
   border-radius: var(--radius-full);
   font-family: var(--font-script);
   font-size: 0.95rem;
-  color: var(--primary-rose);
-  border: 1px solid #fbcfe8;
+  color: var(--primary-deep);
+  border: 1px solid #d8b4fe;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
@@ -1029,7 +1047,7 @@ body {
 .bouquet-count-badge {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
 }
 
 .bouquet-action-btns {
@@ -1080,9 +1098,9 @@ body {
 .flame {
   width: 14px;
   height: 24px;
-  background: radial-gradient(circle at 50% 80%, #ffedd5 0%, #fbbf24 40%, #f97316 75%, #ef4444 100%);
+  background: radial-gradient(circle at 50% 80%, #fffbeb 0%, #facc15 40%, #fb923c 75%, #a855f7 100%);
   border-radius: 50% 50% 35% 35%;
-  box-shadow: 0 0 14px rgba(251, 191, 36, 0.8), 0 0 24px rgba(249, 115, 22, 0.5);
+  box-shadow: 0 0 14px rgba(250, 204, 21, 0.8), 0 0 24px rgba(168, 85, 247, 0.5);
   animation: flickerFlame 0.8s ease-in-out infinite alternate;
   transform-origin: bottom center;
 }
@@ -1100,7 +1118,7 @@ body {
   display: none;
   width: 6px;
   height: 20px;
-  background: rgba(160, 160, 160, 0.4);
+  background: rgba(168, 85, 247, 0.3);
   border-radius: 4px;
   filter: blur(2px);
   animation: smokeRise 1.2s ease-out forwards;
@@ -1128,9 +1146,9 @@ body {
   box-shadow: inset 2px 0 4px rgba(255, 255, 255, 0.5);
 }
 
-.candle-1 { background: linear-gradient(180deg, #f472b6 0%, #db2777 100%); }
+.candle-1 { background: linear-gradient(180deg, #c084fc 0%, #9333ea 100%); }
 .candle-2 { background: linear-gradient(180deg, #facc15 0%, #eab308 100%); }
-.candle-3 { background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%); }
+.candle-3 { background: linear-gradient(180deg, #e879f9 0%, #a855f7 100%); }
 
 /* Cake Body Structure */
 .cake-body {
@@ -1144,7 +1162,7 @@ body {
   position: relative;
   width: 200px;
   height: 25px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 14px 14px 0 0;
   display: flex;
   justify-content: space-around;
@@ -1170,7 +1188,7 @@ body {
 
 .layer-top {
   height: 50px;
-  background: linear-gradient(180deg, #fbcfe8 0%, #f472b6 100%);
+  background: linear-gradient(180deg, #e9d5ff 0%, #c084fc 100%);
   border-radius: 4px;
 }
 
@@ -1185,7 +1203,7 @@ body {
 .drip {
   width: 16px;
   height: 12px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 0 0 8px 8px;
 }
 
@@ -1198,16 +1216,16 @@ body {
 .layer-bottom {
   height: 55px;
   width: 240px;
-  background: linear-gradient(180deg, #f9a8d4 0%, #ec4899 100%);
+  background: linear-gradient(180deg, #d8b4fe 0%, #a855f7 100%);
   border-radius: 0 0 8px 8px;
 }
 
 .cake-plate {
   width: 280px;
   height: 12px;
-  background: radial-gradient(ellipse at center, #ffffff 0%, #e2e8f0 100%);
+  background: radial-gradient(ellipse at center, #ffffff 0%, #ede4fc 100%);
   border-radius: 50%;
-  box-shadow: 0 10px 20px rgba(74, 21, 37, 0.15);
+  box-shadow: 0 10px 20px rgba(59, 7, 100, 0.15);
   margin-top: -2px;
 }
 
@@ -1227,11 +1245,11 @@ body {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(244, 114, 182, 0.4);
+  border: 1px solid rgba(168, 85, 247, 0.4);
   border-radius: var(--radius-lg);
   padding: 2rem;
   text-align: center;
-  box-shadow: 0 16px 36px rgba(74, 21, 37, 0.12);
+  box-shadow: 0 16px 36px rgba(59, 7, 100, 0.14);
   animation: popWishCard 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
@@ -1272,8 +1290,8 @@ body {
 .page-footer {
   text-align: center;
   padding: 4rem 1.5rem;
-  border-top: 1px solid rgba(244, 114, 182, 0.2);
-  background: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
+  background: rgba(255, 255, 255, 0.7);
   position: relative;
   z-index: 10;
 }
@@ -1296,7 +1314,7 @@ body {
 .footer-sign {
   font-family: var(--font-script);
   font-size: 1.35rem;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   margin-bottom: 1.5rem;
 }
 
@@ -1317,7 +1335,7 @@ body {
 }
 
 .text-link:hover {
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   text-decoration: underline;
 }
 
@@ -1338,7 +1356,6 @@ dialog {
   max-height: 90vh;
   margin: auto;
   overflow: visible;
-  /* Top layer transitions */
   transition-property: opacity, transform, overlay, display;
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -1346,7 +1363,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(40, 10, 20, 0);
+  background: rgba(46, 16, 101, 0);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   transition-property: background, backdrop-filter, overlay, display;
@@ -1361,7 +1378,7 @@ dialog[open] {
 }
 
 dialog[open]::backdrop {
-  background: rgba(40, 10, 20, 0.45);
+  background: rgba(46, 16, 101, 0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -1372,12 +1389,11 @@ dialog[open]::backdrop {
     transform: scale(0.92) translateY(20px);
   }
   dialog[open]::backdrop {
-    background: rgba(40, 10, 20, 0);
+    background: rgba(46, 16, 101, 0);
     backdrop-filter: blur(0px);
   }
 }
 
-/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   dialog {
     transform: none !important;
@@ -1390,7 +1406,6 @@ dialog[open]::backdrop {
   }
 }
 
-/* Close Card Button */
 .close-card-btn {
   width: 36px;
   height: 36px;
@@ -1407,8 +1422,8 @@ dialog[open]::backdrop {
 }
 
 .close-card-btn:hover {
-  background: rgba(225, 29, 72, 0.1);
-  color: var(--primary-rose);
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--primary-deep);
   transform: rotate(90deg);
 }
 
@@ -1421,18 +1436,18 @@ dialog[open]::backdrop {
   overflow-y: auto;
   padding: 1rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--blush-300) transparent;
+  scrollbar-color: var(--purple-300) transparent;
 }
 
 .vintage-letter-card {
   position: relative;
   width: 100%;
   max-width: 640px;
-  background: #fffdfa;
+  background: #fdfbff;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(244, 114, 182, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
-  border: 1px solid #ebdcd0;
+    radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+  border: 1px solid #ede4fc;
   border-radius: 16px;
   padding: 3rem 3.5rem;
   box-shadow: var(--paper-shadow);
@@ -1449,7 +1464,7 @@ dialog[open]::backdrop {
   content: '';
   position: absolute;
   inset: 12px;
-  border: 1px dashed rgba(244, 114, 182, 0.25);
+  border: 1px dashed rgba(168, 85, 247, 0.28);
   border-radius: 10px;
   pointer-events: none;
 }
@@ -1467,9 +1482,9 @@ dialog[open]::backdrop {
 .postal-stamp {
   width: 58px;
   height: 68px;
-  border: 2px dashed #e11d48;
+  border: 2px dashed #7e22ce;
   border-radius: 4px;
-  background: #fff5f7;
+  background: #faf5ff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1486,7 +1501,7 @@ dialog[open]::backdrop {
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #e11d48;
+  color: #7e22ce;
   margin-top: 2px;
 }
 
@@ -1496,7 +1511,7 @@ dialog[open]::backdrop {
   letter-spacing: 0.15em;
   color: var(--text-muted);
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(244, 114, 182, 0.3);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.35);
   padding-bottom: 2px;
 }
 
@@ -1510,7 +1525,7 @@ dialog[open]::backdrop {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -1532,18 +1547,18 @@ dialog[open]::backdrop {
 .div-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(244, 114, 182, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.45), transparent);
 }
 
 .div-flower {
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   font-size: 1.2rem;
 }
 
 /* Dynamic Letter Body Injections */
 .letter-body-dynamic {
   font-size: 1.05rem;
-  color: #3b121e;
+  color: #3b0764;
   line-height: 1.8;
   margin-bottom: 2.5rem;
 }
@@ -1572,10 +1587,10 @@ dialog[open]::backdrop {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  background: rgba(254, 242, 246, 0.6);
+  background: rgba(243, 232, 255, 0.65);
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
-  border-left: 3px solid var(--primary-pink);
+  border-left: 3px solid var(--primary-lavender);
 }
 
 .reason-emoji {
@@ -1607,7 +1622,7 @@ dialog[open]::backdrop {
   padding: 0.75rem 0.75rem 1.25rem;
   border-radius: 4px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  border: 1px solid #efe2d8;
+  border: 1px solid #ede4fc;
   transform: rotate(-1deg);
   transition: transform 0.3s ease;
 }
@@ -1658,8 +1673,8 @@ dialog[open]::backdrop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff8f5;
-  border: 1.5px dashed #ee6c4d;
+  background: #faf5ff;
+  border: 1.5px dashed #9333ea;
   border-radius: var(--radius-sm);
   padding: 0.85rem 1.25rem;
   position: relative;
@@ -1679,8 +1694,8 @@ dialog[open]::backdrop {
 .coupon-badge {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #ee6c4d;
-  background: #fee7df;
+  color: #7e22ce;
+  background: #f3e8ff;
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-full);
 }
@@ -1702,7 +1717,7 @@ dialog[open]::backdrop {
   font-family: var(--font-script);
   font-size: 1.85rem;
   font-weight: 700;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   margin-top: 0.35rem;
 }
 
@@ -1716,13 +1731,13 @@ dialog[open]::backdrop {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #e11d48 0%, #be123c 65%, #881337 100%);
+  background: radial-gradient(circle at 35% 35%, #9333ea 0%, #7e22ce 60%, #4c1d95 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.25rem;
-  box-shadow: 0 4px 12px rgba(136, 19, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(76, 29, 149, 0.35);
 }
 
 /* ==========================================================================
@@ -1737,7 +1752,8 @@ dialog[open]::backdrop {
   background: #ffffff;
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(59, 7, 100, 0.18);
+  border: 1px solid #e9d5ff;
 }
 
 .customizer-header {
@@ -1792,20 +1808,20 @@ dialog[open]::backdrop {
 .form-group input,
 .form-group textarea {
   padding: 0.65rem 0.9rem;
-  border: 1px solid #fbcfe8;
+  border: 1px solid #d8b4fe;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: 0.95rem;
   color: var(--text-primary);
-  background: #fffdfd;
+  background: #fdfbff;
   transition: border-color 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--primary-pink);
-  box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.2);
+  border-color: var(--primary-lavender);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
 }
 
 .envelopes-editor-section h3 {
@@ -1824,8 +1840,8 @@ dialog[open]::backdrop {
 }
 
 .env-edit-box {
-  background: #fff8f9;
-  border: 1px solid #fce7f3;
+  background: #faf5ff;
+  border: 1px solid #f3e8ff;
   border-radius: var(--radius-sm);
   padding: 0.85rem;
 }
@@ -1833,7 +1849,7 @@ dialog[open]::backdrop {
 .env-edit-box label {
   font-weight: 600;
   font-size: 0.85rem;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   display: block;
   margin-bottom: 0.35rem;
 }
@@ -1843,7 +1859,7 @@ dialog[open]::backdrop {
   height: 70px;
   font-size: 0.85rem;
   padding: 0.5rem;
-  border: 1px solid #f9a8d4;
+  border: 1px solid #c084fc;
   border-radius: 4px;
   resize: vertical;
 }
@@ -1854,7 +1870,7 @@ dialog[open]::backdrop {
   gap: 0.75rem;
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid #fce7f3;
+  border-top: 1px solid #f3e8ff;
 }
 
 /* ==========================================================================
@@ -1864,20 +1880,20 @@ dialog[open]::backdrop {
 .bouquet-modal-content {
   width: 100%;
   max-width: 520px;
-  background: #fffdfb;
+  background: #fdfbff;
   border-radius: var(--radius-lg);
   padding: 2.5rem 2rem;
   text-align: center;
   position: relative;
-  box-shadow: 0 16px 36px rgba(74, 21, 37, 0.15);
-  border: 1px solid #fbcfe8;
+  box-shadow: 0 16px 36px rgba(59, 7, 100, 0.16);
+  border: 1px solid #d8b4fe;
 }
 
 .bouquet-presentation-ribbon {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   margin-bottom: 0.75rem;
 }
 
@@ -1895,8 +1911,8 @@ dialog[open]::backdrop {
 }
 
 .presentation-card {
-  background: #fff9fa;
-  border: 1px dashed #f472b6;
+  background: #faf5ff;
+  border: 1px dashed #a855f7;
   border-radius: var(--radius-md);
   padding: 1.5rem;
   text-align: left;
@@ -1924,7 +1940,7 @@ dialog[open]::backdrop {
   gap: 0.4rem;
   font-size: 0.85rem;
   color: var(--text-muted);
-  border-top: 1px solid rgba(244, 114, 182, 0.2);
+  border-top: 1px solid rgba(168, 85, 247, 0.25);
   padding-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
@@ -1932,6 +1948,6 @@ dialog[open]::backdrop {
 .pres-note-closing {
   font-family: var(--font-script);
   font-size: 1.35rem;
-  color: var(--primary-rose);
+  color: var(--primary-deep);
   text-align: right;
 }

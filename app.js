@@ -248,14 +248,17 @@
         ctx.arc(0, 0, this.size * 0.25, 0, Math.PI * 2);
         ctx.fill();
       } else {
-        // Romantic Petal Shape
+        // Enchanted Lavender & Violet Petal Shape
         const grad = ctx.createLinearGradient(0, -this.size, 0, this.size);
-        if (this.colorType > 0.4) {
-          grad.addColorStop(0, '#fbcfe8');
-          grad.addColorStop(1, '#f472b6');
+        if (this.colorType > 0.6) {
+          grad.addColorStop(0, '#e9d5ff'); // Light lilac
+          grad.addColorStop(1, '#a855f7'); // Lavender bloom
+        } else if (this.colorType > 0.3) {
+          grad.addColorStop(0, '#d8b4fe'); // Soft wisteria
+          grad.addColorStop(1, '#7e22ce'); // Royal amethyst
         } else {
-          grad.addColorStop(0, '#fda4af');
-          grad.addColorStop(1, '#fb7185');
+          grad.addColorStop(0, '#f3e8ff'); // Violet mist
+          grad.addColorStop(1, '#c084fc'); // Purple orchid
         }
 
         ctx.fillStyle = grad;
@@ -287,7 +290,7 @@
   // --- CELEBRATION CONFETTI ENGINE ---
   function triggerCelebrationConfetti() {
     playSoundEffect('chime');
-    const colors = ['#f472b6', '#fb7185', '#e11d48', '#facc15', '#c084fc', '#ffffff'];
+    const colors = ['#a855f7', '#c084fc', '#7e22ce', '#9333ea', '#e9d5ff', '#facc15', '#ffffff'];
     const count = 90;
 
     for (let i = 0; i < count; i++) {
